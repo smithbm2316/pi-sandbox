@@ -69,6 +69,7 @@ import type { ExtensionAPI, ExtensionContext } from "@mariozechner/pi-coding-age
 import {
   type BashOperations,
   createBashTool,
+  getAgentDir,
   isToolCallEventType,
 } from "@mariozechner/pi-coding-agent";
 
@@ -103,7 +104,7 @@ const DEFAULT_CONFIG: SandboxConfig = {
 
 function loadConfig(cwd: string): SandboxConfig {
   const projectConfigPath = join(cwd, ".pi", "sandbox.json");
-  const globalConfigPath = join(homedir(), ".pi", "agent", "sandbox.json");
+  const globalConfigPath = join(getAgentDir(), "sandbox.json");
 
   let globalConfig: Partial<SandboxConfig> = {};
   let projectConfig: Partial<SandboxConfig> = {};
